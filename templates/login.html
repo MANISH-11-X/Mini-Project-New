@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Food Manager</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #f6f8f3;
+    color: #263326;
+    min-height: 100vh;
+}
+
+
+.form-card {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 38px 35px;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border-radius: 20px;
+
+    border: 1px solid #e3e8df;
+
+    box-shadow:
+        0 20px 50px rgba(43, 70, 47, 0.10),
+        0 5px 15px rgba(0, 0, 0, 0.04);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-card:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 25px 60px rgba(43, 70, 47, 0.13),
+        0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-card h1 {
+    text-align: center;
+
+    color: #294d31;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    margin-bottom: 32px;
+
+    letter-spacing: -0.5px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #344437;
+}
+
+
+input,
+select {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    margin-bottom: 21px;
+
+    border: 1px solid #d7ded4;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    font-family: inherit;
+
+    color: #263326;
+
+    background: #fbfcfa;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+
+
+
+input::placeholder {
+    color: #9aa39b;
+}
+
+
+input:focus,
+select:focus {
+    border-color: #5c9462;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(92, 148, 98, 0.12);
+}
+
+button {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 2px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #3f7045;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 18px rgba(63, 112, 69, 0.22);
+
+    transition: all 0.25s ease;
+}
+
+button:hover {
+    background: #315c3a;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(63, 112, 69, 0.28);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+.delete-btn {
+    display: inline-block;
+
+    background: #dc5b5b;
+
+    color: white;
+transform: translateY(-1px);
+}
+
+
+
+.page-title {
+    text-align: center;
+
+    font-size: 36px;
+
+    color: #294d31;
+
+    margin-bottom: 35px;
+}
+
+
+.bottom-text {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #687269;
+
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #3f7045;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.bottom-text a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+
+        font-size: 13px;
+    }
+
+    .container {
+        width: 92%;
+
+        padding-top: 35px;
+    }
+
+    .form-card {
+        padding: 30px 24px;
+
+        border-radius: 17px;
+    }
+
+    .form-card h1 {
+        font-size: 27px;
+    }
+
+    .search-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .search-box button {
+        width: 100%;
+    }
+
+    .table-card {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 700px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+    <div class="form-card">
+
+        <h1>Login</h1>
+
+        <form action="/login" method="post">
+
+            <label for="email">Email</label>
+
+            <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label for="password">Password</label>
+
+            <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <p class="bottom-text">
+            Don't have an account?
+            <a href="/">
+                Register
+            </a>
+        </p>
+
+    </div>
+
+</body>
+
+</html>
