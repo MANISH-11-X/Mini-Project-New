@@ -54,7 +54,7 @@ def check_expiry():
                 timeout=10 
                 ) 
  
-        time.sleep(3600) 
+        time.sleep(36000) 
  
 @app.route("/") 
 def home(): 
@@ -121,6 +121,12 @@ def login():
         return render_template('web.html') 
  
     return "Invalid email or password" 
+
+# Logout
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/loginn")
  
 @app.route("/account") 
 def account(): 
@@ -262,10 +268,50 @@ def food():
         response = genai_client.models.generate_content( 
         model="gemini-3.6-flash", 
         contents= f"""food name: {foodname} 
-        suggest 3 recipies. 
-        Give name, ingredients, and steps for each recipe. 
-        keep the response concise. 
-        Return the response in Markdown format.
+        Suggest exactly 3 recipes using this food.
+
+For each recipe, use this exact Markdown structure:
+
+## Recipe 1: Recipe Name
+
+### Ingredients
+- Ingredient 1
+- Ingredient 2
+- Ingredient 3
+- Ingredient 4
+
+### Steps
+1. Step one
+2. Step two
+3. Step three
+4. Step four
+
+## Recipe 2: Recipe Name
+
+### Ingredients
+- Ingredient 1
+- Ingredient 2
+- Ingredient 3
+
+### Steps
+1. Step one
+2. Step two
+3. Step three
+
+## Recipe 3: Recipe Name
+
+### Ingredients
+- Ingredient 1
+- Ingredient 2
+- Ingredient 3
+
+### Steps
+1. Step one
+2. Step two
+3. Step three
+
+Keep the recipes concise.
+Return ONLY Markdown. Do not use HTML.
         """ 
         ) 
  
