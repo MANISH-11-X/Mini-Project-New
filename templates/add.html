@@ -24,10 +24,9 @@ body {
 
 
 
-.navbar {
-    height: 76px;
-
-    background: rgba(255, 255, 255, 0.95);
+ .navbar {
+    width: 100%;
+    height: 74px;
 
     display: flex;
     align-items: center;
@@ -35,50 +34,106 @@ body {
 
     padding: 0 7%;
 
-    border-bottom: 1px solid #e4e9df;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
 
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e5ebe2;
 
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    box-shadow: 0 4px 20px rgba(34, 65, 38, 0.05);
 }
 
+
+/* Logo */
 .logo {
-    font-size: 23px;
-    font-weight: 700;
-
-    color: #315c3a;
-
-    letter-spacing: -0.4px;
-}
-
-.nav-links {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #285c32;
+
+    white-space: nowrap;
+}
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf4e8;
+    border-radius: 11px;
+
+    font-size: 21px;
+}
+
+
+/* Center Navigation */
+.nav-links {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+
+    gap: 32px;
+
+    list-style: none;
 }
 
 .nav-links a {
+    position: relative;
+
     text-decoration: none;
 
-    color: #4e5b50;
-
-    padding: 10px 17px;
-
-    border-radius: 9px;
+    color: #59645b;
 
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
 
-    transition: all 0.25s ease;
+    padding: 8px 0;
+
+    transition: 0.25s ease;
 }
 
-.nav-links a:hover {
-    background: #edf5eb;
-    color: #3f7045;
+.nav-links a:hover,
+.nav-links a.active {
+    color: #2f743b;
+}
 
-    transform: translateY(-1px);
+.nav-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: #3e8248;
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
 
 .container {
@@ -428,17 +483,50 @@ tr:hover td {
 
 <body>
 
-    <nav class="navbar">
+ <nav class="navbar">
 
         <div class="logo">
-            🍱 Food Manager
+            <div class="logo-icon">🍱</div>
+            <span>GroceryFoodManager</span>
         </div>
 
-        <div class="nav-links">
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{{url_for('webhome')}}" class="active">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url_for('add_food')}}">
+                    Add Food
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url_for('view')}}">
+                    View Food
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url_for('f')}}">
+                    Analyze Food
+                </a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-links" style="margin-left: 650px;">
             <a href="{{url_for('webhome')}}">Go Back</a>
         </div>
 
     </nav>
+
+
 
 
     <div class="container">
