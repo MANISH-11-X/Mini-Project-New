@@ -313,6 +313,8 @@
 
             color: #d95757;
 
+            margin-left: 10px;
+
             padding: 10px 18px;
 
             border-radius: 9px;
@@ -546,15 +548,25 @@
 
             <div class="actions">
 
-                <a
-                    href="{{ url_for('delete_user', u_id=data['_id']) }}"
-                    onclick="return confirm('Do you really want to delete it?');"
-                    class="delete-btn"
-                >
-                    🗑 Delete Account
-                </a>
+    <!-- Delete Account -->
+    <a
+        href="{{ url_for('delete_user', u_id=data['_id']) }}"
+        onclick="return confirm('Do you really want to delete it?');"
+        class="delete-btn"
+    >
+        🗑 Delete Account
+    </a>
 
-            </div>
+    <!-- Logout -->
+    <a
+        href="{{ url_for('logout') }}"
+        onclick="return confirm('Do you really want to logout?');"
+        class="delete-btn"
+    >
+        🚪 Logout
+    </a>
+
+</div>
 
 
         </div>
